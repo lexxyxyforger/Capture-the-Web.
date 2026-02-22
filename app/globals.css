@@ -1,26 +1,133 @@
-@import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&display=swap");
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg: #05050e;
+  --surface: #10101f;
+  --surface2: #15152a;
+  --neon: #4fffb0;
+  --neon2: #c084fc;
+  --neon3: #f97316;
+  --text: #ededfa;
+  --muted: #5b6378;
+  --dim: #374151;
+  --border: rgba(255, 255, 255, 0.06);
+  --border-neon: rgba(79, 255, 176, 0.22);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Syne", sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(79, 255, 176, 0.18);
+  color: var(--neon);
+}
+::-webkit-scrollbar {
+  width: 3px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(79, 255, 176, 0.25);
+  border-radius: 99px;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes pulseNeon {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(79, 255, 176, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(79, 255, 176, 0);
+  }
+}
+@keyframes shimmer {
+  from {
+    background-position: -200% center;
+  }
+  to {
+    background-position: 200% center;
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.anim-fade-up {
+  animation: fadeUp 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.anim-fade-in {
+  animation: fadeIn 0.45s ease both;
+}
+.anim-spin {
+  animation: spin 1s linear infinite;
+}
+.anim-blink {
+  animation: blink 1.2s ease infinite;
+}
+
+.d1 {
+  animation-delay: 0.1s;
+}
+.d2 {
+  animation-delay: 0.2s;
+}
+.d3 {
+  animation-delay: 0.3s;
+}
+.d4 {
+  animation-delay: 0.4s;
+}
+.d5 {
+  animation-delay: 0.55s;
 }
